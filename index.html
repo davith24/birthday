@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+  <meta charset="UTF-8">
+  <title>🎂 រីករាយថ្ងៃខួបកំណើត</title>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(12px);
+      padding: 35px 25px;
+      border-radius: 28px;
+      text-align: center;
+      width: 92%;
+      max-width: 460px;
+      box-shadow: 0 25px 40px rgba(0,0,0,0.25);
+      animation: fadeIn 1.2s ease;
+      z-index: 2;
+    }
+
+    h1 {
+      color: #ff4081;
+      margin-bottom: 8px;
+    }
+
+    p {
+      font-size: 17px;
+      color: #444;
+    }
+
+    .gallery {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin: 18px 0;
+    }
+
+    .gallery img {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #ff4081;
+      transition: 0.4s;
+      cursor: pointer;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.15);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+    }
+
+    button {
+      margin-top: 18px;
+      padding: 14px 32px;
+      border: none;
+      border-radius: 40px;
+      background: linear-gradient(135deg, #ff4081, #ff6f91);
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      transform: scale(1.08);
+    }
+
+    #wish {
+      display: block;
+      margin-top: 22px;
+      font-size: 18px;
+      color: #333;
+      white-space: pre-line;
+      min-height: 220px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      top: -10px;
+      animation: fall linear forwards;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0;
+      }
+    }
+
+    .heart {
+      position: absolute;
+      bottom: -20px;
+      font-size: 18px;
+      animation: floatUp 6s linear infinite;
+    }
+
+    @keyframes floatUp {
+      to {
+        transform: translateY(-110vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+    <h1>🎂 រីករាយថ្ងៃខួបកំណើត 🎉</h1>
+    <p>ជូនពរប្អូនស្រីជាទីស្រឡាញ់ 💖</p>
+
+    <div class="gallery">
+      <img src="1.jpg" alt="pic1">
+      <img src="2.jpg" alt="pic2">
+      <img src="3.jpg" alt="pic3">
+    </div>
+
+    <button onclick="startWish()">ចុចមើលពាក្យជូនពរ 🎁</button>
+
+    <div id="wish"></div>
+  </div>
+
+  <audio id="music" loop>
+    <source src="Happy.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    const messages = [
+      "💐 សូមឲ្យប្អូនមានសុខភាពល្អ",
+      "😊 សុភមង្គល និងស្នាមញញឹមជានិច្ច",
+      "🌟 ជួបតែសំណាងល្អ និងជោគជ័យក្នុងគ្រប់ផ្នែកនៃជីវិត",
+      "💕 រីករាយក្នុងការស្វែងរកអ្វីដែលប្អូនស្រឡាញ់",
+      "🎵 សូម្បីតែថ្ងៃធ្ងន់ៗ ក៏មានចម្រៀងនៃសេចក្តីស្រឡាញ់",
+      "🍀 រីករាយក្នុងការសម្រេចគោលបំណង និងក្តីស្រមៃ",
+      "🎈 រាល់ថ្ងៃក្លាយទៅជាថ្ងៃពិសេសសម្រាប់ប្អូន",
+      "🌸 មានមិត្តភាព និងក្តីស្រឡាញ់ជុំវិញប្អូនជានិច្ច",
+      "💎 រីករាយក្នុងការរីកចម្រើន និងភាពសុភមង្គល",
+      "🌞 រាល់ថ្ងៃថ្មីនាំមកនូវអារម្មណ៍ថ្មី និងភាពរីករាយ",
+      "🍰 សូមឲ្យមានរូបរាងស្អាត និងចិត្តសប្បាយ",
+      "🎁 ជួបតែអ្វីដែលប្អូនចង់បាន និងមានភាពរីករាយជានិច្ច",
+      "💖 បងតែងតែស្រឡាញ់ និងគាំទ្រប្អូនជានិច្ច"
+    ];
+
+    function startWish() {
+      document.getElementById("wish").innerHTML = "";
+      document.getElementById("music").play();
+      for (let i = 0; i < 120; i++) createConfetti();
+      typeMessage(0, 0);
+    }
+
+    function typeMessage(msgIndex, charIndex) {
+      if (msgIndex >= messages.length) return;
+      const wishDiv = document.getElementById("wish");
+      if (charIndex < messages[msgIndex].length) {
+        wishDiv.innerHTML += messages[msgIndex][charIndex];
+        setTimeout(() => typeMessage(msgIndex, charIndex + 1), 60);
+      } else {
+        wishDiv.innerHTML += "\n"; // បន្ថែមជួរ line ថ្មី
+        setTimeout(() => typeMessage(msgIndex + 1, 0), 300);
+      }
+    }
+
+    function createConfetti() {
+      const confetti = document.createElement("div");
+      confetti.className = "confetti";
+      document.body.appendChild(confetti);
+
+      const colors = ["#ff4081", "#ffd740", "#40c4ff", "#69f0ae"];
+      confetti.style.backgroundColor =
+        colors[Math.floor(Math.random() * colors.length)];
+
+      confetti.style.left = Math.random() * innerWidth + "px";
+      confetti.style.animationDuration = Math.random() * 3 + 2 + "s";
+
+      setTimeout(() => confetti.remove(), 5000);
+    }
+
+    setInterval(() => {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerText = "💖";
+      heart.style.left = Math.random() * innerWidth + "px";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }, 500);
+  </script>
+
+</body>
+</html>
