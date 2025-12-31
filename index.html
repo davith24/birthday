@@ -1,69 +1,83 @@
 <!DOCTYPE html>
-<html lang="km">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>🎂 រីករាយថ្ងៃខួបកំណើត</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎂 Happy Birthday</title>
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
-      height: 100vh;
+      min-height: 100vh;
       background: linear-gradient(135deg, #ff9a9e, #fad0c4);
       display: flex;
       justify-content: center;
       align-items: center;
-      font-family: 'Segoe UI', sans-serif;
-      overflow: hidden;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow-x: hidden;
+      padding: 15px;
+      touch-action: manipulation;
     }
 
     .card {
-      background: rgba(255,255,255,0.88);
+      background: rgba(255,255,255,0.95);
       backdrop-filter: blur(12px);
-      padding: 35px 25px;
-      border-radius: 28px;
+      padding: 25px 20px;
+      border-radius: 24px;
       text-align: center;
-      width: 92%;
-      max-width: 460px;
-      box-shadow: 0 25px 40px rgba(0,0,0,0.25);
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
       animation: fadeIn 1.2s ease;
       z-index: 2;
+      margin: 10px 0;
     }
 
     h1 {
       color: #ff4081;
       margin-bottom: 8px;
+      font-size: 1.5rem;
+      line-height: 1.3;
+      padding: 0 10px;
     }
 
     p {
-      font-size: 17px;
+      font-size: 16px;
       color: #444;
+      margin-bottom: 15px;
+      padding: 0 5px;
     }
 
     .gallery {
       display: flex;
       justify-content: center;
-      gap: 12px;
-      margin: 18px 0;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 15px 0;
     }
 
     .gallery img {
-      width: 90px;
-      height: 90px;
+      width: 75px;
+      height: 75px;
       border-radius: 50%;
       object-fit: cover;
-      border: 4px solid #ff4081;
-      transition: 0.4s;
+      border: 3px solid #ff4081;
+      transition: 0.3s;
       cursor: pointer;
     }
 
     .gallery img:hover {
-      transform: scale(1.15);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+      transform: scale(1.1);
+      box-shadow: 0 8px 15px rgba(0,0,0,0.2);
     }
 
     button {
-      margin-top: 18px;
-      padding: 14px 32px;
+      margin-top: 15px;
+      padding: 14px 28px;
       border: none;
       border-radius: 40px;
       background: linear-gradient(135deg, #ff4081, #ff6f91);
@@ -71,19 +85,28 @@
       font-size: 16px;
       cursor: pointer;
       transition: 0.3s;
+      width: 90%;
+      max-width: 280px;
+      font-weight: 600;
+      -webkit-tap-highlight-color: transparent;
     }
 
-    button:hover {
-      transform: scale(1.08);
+    button:active {
+      transform: scale(0.98);
     }
 
     #wish {
       display: block;
-      margin-top: 22px;
-      font-size: 18px;
+      margin-top: 20px;
+      font-size: 17px;
       color: #333;
       white-space: pre-line;
-      min-height: 220px;
+      min-height: 180px;
+      padding: 0 10px;
+      line-height: 1.5;
+      text-align: left;
+      overflow-y: auto;
+      max-height: 300px;
     }
 
     @keyframes fadeIn {
@@ -93,10 +116,12 @@
 
     .confetti {
       position: absolute;
-      width: 10px;
-      height: 10px;
+      width: 8px;
+      height: 8px;
       top: -10px;
       animation: fall linear forwards;
+      pointer-events: none;
+      z-index: 1;
     }
 
     @keyframes fall {
@@ -111,6 +136,8 @@
       bottom: -20px;
       font-size: 18px;
       animation: floatUp 6s linear infinite;
+      pointer-events: none;
+      z-index: 1;
     }
 
     @keyframes floatUp {
@@ -119,63 +146,131 @@
         opacity: 0;
       }
     }
+
+    /* Responsive for smaller phones */
+    @media (max-width: 360px) {
+      .card {
+        padding: 20px 15px;
+      }
+      
+      h1 {
+        font-size: 1.3rem;
+      }
+      
+      .gallery img {
+        width: 65px;
+        height: 65px;
+      }
+      
+      button {
+        padding: 12px 20px;
+        font-size: 15px;
+      }
+      
+      #wish {
+        font-size: 16px;
+        min-height: 150px;
+      }
+    }
+
+    /* Prevent overscroll */
+    .card:active {
+      -webkit-user-select: none;
+      user-select: none;
+    }
+
+    /* Increase touch target for buttons */
+    button {
+      min-height: 48px; /* Accessibility standard */
+    }
+
+    /* Disable long-press on images */
+    .gallery img {
+      -webkit-touch-callout: none;
+    }
   </style>
 </head>
 
 <body>
 
   <div class="card">
-    <h1>🎂 រីករាយថ្ងៃខួបកំណើត 🎉</h1>
-    <p>ជូនពរប្អូនស្រីជាទីស្រឡាញ់ 💖</p>
+    <h1>🎂 Happy Birthday 🎉</h1>
+    <p>To my beloved sister 💖</p>
 
     <div class="gallery">
-      <img src="1.jpg" alt="pic1">
-      <img src="2.jpg" alt="pic2">
-      <img src="3.jpg" alt="pic3">
+      <img src="1.jpg" alt="Birthday photo 1" loading="lazy">
+      <img src="2.jpg" alt="Birthday photo 2" loading="lazy">
+      <img src="3.jpg" alt="Birthday photo 3" loading="lazy">
     </div>
 
-    <button onclick="startWish()">ចុចមើលពាក្យជូនពរ 🎁</button>
+    <button onclick="startWish()" id="wishBtn">Click to See Birthday Wishes 🎁</button>
 
     <div id="wish"></div>
   </div>
 
-  <audio id="music" loop>
+  <audio id="music" loop preload="none">
     <source src="Happy.mp3" type="audio/mpeg">
   </audio>
 
   <script>
     const messages = [
-      "💐 សូមឲ្យប្អូនមានសុខភាពល្អ",
-      "😊 សុភមង្គល និងស្នាមញញឹមជានិច្ច",
-      "🌟 ជួបតែសំណាងល្អ និងជោគជ័យក្នុងគ្រប់ផ្នែកនៃជីវិត",
-      "💕 រីករាយក្នុងការស្វែងរកអ្វីដែលប្អូនស្រឡាញ់",
-      "🎵 សូម្បីតែថ្ងៃធ្ងន់ៗ ក៏មានចម្រៀងនៃសេចក្តីស្រឡាញ់",
-      "🍀 រីករាយក្នុងការសម្រេចគោលបំណង និងក្តីស្រមៃ",
-      "🎈 រាល់ថ្ងៃក្លាយទៅជាថ្ងៃពិសេសសម្រាប់ប្អូន",
-      "🌸 មានមិត្តភាព និងក្តីស្រឡាញ់ជុំវិញប្អូនជានិច្ច",
-      "💎 រីករាយក្នុងការរីកចម្រើន និងភាពសុភមង្គល",
-      "🌞 រាល់ថ្ងៃថ្មីនាំមកនូវអារម្មណ៍ថ្មី និងភាពរីករាយ",
-      "🍰 សូមឲ្យមានរូបរាងស្អាត និងចិត្តសប្បាយ",
-      "🎁 ជួបតែអ្វីដែលប្អូនចង់បាន និងមានភាពរីករាយជានិច្ច",
-      "💖 បងតែងតែស្រឡាញ់ និងគាំទ្រប្អូនជានិច្ច"
+      "💐 Wishing you the best of health",
+      "😊 May happiness and smiles always be with you",
+      "🌟 May you meet good luck and success in every aspect of life",
+      "💕 Enjoy pursuing what you love",
+      "🎵 Even on difficult days, may there be songs of love",
+      "🍀 Happy achieving your goals and dreams",
+      "🎈 May every day become special for you",
+      "🌸 May friendship and love always surround you",
+      "💎 Enjoy growth and prosperity",
+      "🌞 May each new day bring fresh feelings and happiness",
+      "🍰 May you have a beautiful appearance and a cheerful heart",
+      "🎁 May you meet everything you desire and have everlasting joy",
+      "💖 I will always love and support you"
     ];
 
+    let isPlaying = false;
+
     function startWish() {
+      if (isPlaying) return;
+      isPlaying = true;
+      
+      const wishBtn = document.getElementById("wishBtn");
+      wishBtn.disabled = true;
+      wishBtn.innerHTML = "Showing Birthday Wishes... ✨";
+      
       document.getElementById("wish").innerHTML = "";
-      document.getElementById("music").play();
-      for (let i = 0; i < 120; i++) createConfetti();
+      
+      // Play music with mobile optimization
+      try {
+        const audio = document.getElementById("music");
+        audio.volume = 0.7;
+        audio.play().catch(e => {
+          console.log("Audio play failed:", e);
+          // Continue even if audio fails
+        });
+      } catch (e) {}
+      
+      for (let i = 0; i < 80; i++) createConfetti();
       typeMessage(0, 0);
     }
 
     function typeMessage(msgIndex, charIndex) {
-      if (msgIndex >= messages.length) return;
+      if (msgIndex >= messages.length) {
+        isPlaying = false;
+        const wishBtn = document.getElementById("wishBtn");
+        wishBtn.disabled = false;
+        wishBtn.innerHTML = "Click Again to See Wishes 🎁";
+        return;
+      }
+      
       const wishDiv = document.getElementById("wish");
       if (charIndex < messages[msgIndex].length) {
         wishDiv.innerHTML += messages[msgIndex][charIndex];
         setTimeout(() => typeMessage(msgIndex, charIndex + 1), 60);
       } else {
-        wishDiv.innerHTML += "\n"; // បន្ថែមជួរ line ថ្មី
-        setTimeout(() => typeMessage(msgIndex + 1, 0), 300);
+        wishDiv.innerHTML += "\n\n";
+        setTimeout(() => typeMessage(msgIndex + 1, 0), 400);
       }
     }
 
@@ -188,20 +283,62 @@
       confetti.style.backgroundColor =
         colors[Math.floor(Math.random() * colors.length)];
 
-      confetti.style.left = Math.random() * innerWidth + "px";
-      confetti.style.animationDuration = Math.random() * 3 + 2 + "s";
+      confetti.style.left = Math.random() * window.innerWidth + "px";
+      confetti.style.animationDuration = (Math.random() * 3 + 2) + "s";
 
-      setTimeout(() => confetti.remove(), 5000);
+      setTimeout(() => {
+        if (confetti.parentNode) {
+          confetti.remove();
+        }
+      }, 5000);
     }
 
-    setInterval(() => {
+    // Reduce number of hearts for mobile
+    let heartInterval = setInterval(() => {
+      if (document.hidden) return; // Stop when tab is not visible
+      
       const heart = document.createElement("div");
       heart.className = "heart";
       heart.innerText = "💖";
-      heart.style.left = Math.random() * innerWidth + "px";
+      heart.style.left = Math.random() * window.innerWidth + "px";
+      heart.style.fontSize = (Math.random() * 10 + 16) + "px";
       document.body.appendChild(heart);
-      setTimeout(() => heart.remove(), 6000);
-    }, 500);
+      setTimeout(() => {
+        if (heart.parentNode) {
+          heart.remove();
+        }
+      }, 6000);
+    }, 800);
+
+    // Manage memory when switching tabs
+    document.addEventListener('visibilitychange', function() {
+      if (document.hidden) {
+        clearInterval(heartInterval);
+      } else {
+        heartInterval = setInterval(() => {
+          const heart = document.createElement("div");
+          heart.className = "heart";
+          heart.innerText = "💖";
+          heart.style.left = Math.random() * window.innerWidth + "px";
+          document.body.appendChild(heart);
+          setTimeout(() => {
+            if (heart.parentNode) {
+              heart.remove();
+            }
+          }, 6000);
+        }, 800);
+      }
+    });
+
+    // Enhance touch experience for images
+    document.querySelectorAll('.gallery img').forEach(img => {
+      img.addEventListener('click', function() {
+        this.style.transform = 'scale(1.2)';
+        setTimeout(() => {
+          this.style.transform = 'scale(1)';
+        }, 300);
+      });
+    });
   </script>
 
 </body>
